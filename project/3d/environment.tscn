@@ -1,3 +1,41 @@
-[gd_scene format=2]
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://3d/ground.dae" type="PackedScene" id=1]
+[ext_resource path="res://3d/tree.dae" type="PackedScene" id=2]
+[ext_resource path="res://3d/nest.dae" type="PackedScene" id=3]
+[ext_resource path="res://3d/cave.dae" type="PackedScene" id=4]
 
 [node name="environment" type="Spatial"]
+
+[node name="ground" parent="." instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 48.3314, 0, 0 )
+
+[node name="tree" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.7616, 0, -33.2887 )
+
+[node name="tree2" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24.1267, 0, -25.6537 )
+
+[node name="tree3" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 29.013, 0, -18.0186 )
+
+[node name="tree4" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.0906326, 0, 0.995884, 0, 1, 0, -0.995884, 0, 0.0906326, 43.3669, 0, -21.9888 )
+
+[node name="tree8" parent="." instance=ExtResource( 2 )]
+transform = Transform( -0.7619, -2.83116e-08, -0.647694, 2.83116e-08, 1, -7.70151e-08, 0.647694, -7.70151e-08, -0.7619, 34.0384, 1.21487e-06, 27.4401 )
+
+[node name="nest" parent="tree8" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.889, 6.45784, 0.0782051 )
+
+[node name="tree7" parent="." instance=ExtResource( 2 )]
+transform = Transform( -0.7619, -2.83116e-08, -0.647694, 2.83116e-08, 1, -7.70151e-08, 0.647694, -7.70151e-08, -0.7619, 37.0353, -9.55426e-07, -2.08271 )
+
+[node name="tree6" parent="." instance=ExtResource( 2 )]
+transform = Transform( -0.7619, -2.83116e-08, -0.647694, 2.83116e-08, 1, -7.70151e-08, 0.647694, -7.70151e-08, -0.7619, -8.39696, -3.89662e-08, 26.5185 )
+
+[node name="tree5" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.575976, -2.83116e-08, -0.817467, 7.92641e-08, 1, 2.1215e-08, 0.817467, -7.70151e-08, 0.575976, -16.7617, 6.7318e-07, 38.8403 )
+
+[node name="cave" parent="." instance=ExtResource( 4 )]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, -35.2126, 0, 0 )
