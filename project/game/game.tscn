@@ -14,9 +14,13 @@ script = ExtResource( 5 )
 [node name="interface" parent="." instance=ExtResource( 3 )]
 
 [node name="menu" parent="." instance=ExtResource( 2 )]
+player = NodePath("../player")
 
 [node name="player" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.642788, 0, 0.766044, 0, 1, 0, -0.766044, 0, 0.642788, 0, 3.98869, 0 )
 visible = false
+[connection signal="death" from="interface" to="player" method="_on_interface_death"]
+[connection signal="healthAdd" from="player" to="interface" method="_on_player_healthAdd"]
+[connection signal="healthHit" from="player" to="interface" method="_on_player_healthHit"]
 
 [editable path="player"]

@@ -24,7 +24,7 @@ __meta__ = {
 timer = NodePath("Timer")
 timer_progress = NodePath("LifeBar")
 life_button = NodePath("LifeButton")
-bunny_dead_pic = NodePath("Bunny/DeadBunny")
+bunny_dead = NodePath("Bunny/DeadBunny")
 bunny_label = NodePath("LifeButton/Label")
 
 [node name="LifeBar" type="TextureProgress" parent="."]
@@ -102,4 +102,5 @@ __meta__ = {
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 10.0
+one_shot = true
 [connection signal="pressed" from="LifeButton" to="." method="_on_LifeButton_pressed"]

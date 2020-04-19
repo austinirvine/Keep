@@ -1,9 +1,7 @@
 extends Node
 
-var buttons_assigned = []
-var max_button = 0
+func _ready():
+	Global.connect("start", self, "_on_start")
 
-func get_button():
-	buttons_assigned.append((max_button+1))
-	max_button += 1
-	return max_button
+func _on_start():
+	pass

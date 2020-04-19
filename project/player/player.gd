@@ -4,23 +4,34 @@ export var speed = 10
 export var acceleration = 5
 export var gravity = 0.98
 export var jump_power = 40
-export var mouse_sensitivity = 3
+export var mouse_sensitivity = 0.3
 
 onready var body = $CollisionShape
 onready var body_mesh = $CollisionShape/MeshInstance
 onready var camera = $CollisionShape/Camera
 
 var velocity = Vector3()
+var lock = true
+
+signal healthHit(value)
+signal healthAdd(value)
+signal _on_death()
 
 var camera_x_rotation = 0
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	Global.connect("start", self, "_on_start")
+
+func _on_start():
+	lock = !lock
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _input(event):
+	if lock:
+		return
 	if event is InputEventMouseMotion:
 		body.rotate_y(deg2rad(-event.relative.x * mouse_sensitivity))
 		var x_delta = event.relative.y * mouse_sensitivity
@@ -29,6 +40,9 @@ func _input(event):
 			camera_x_rotation += x_delta
 
 func _physics_process(delta):
+	if lock:
+		return
+
 	var body_basis = body.get_global_transform().basis
 
 	var direction = Vector3()
@@ -52,6 +66,13 @@ func _physics_process(delta):
 
 	velocity = move_and_slide(velocity, Vector3.UP)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func attacked(value):
+	emit_signal("healthHit", value)
+
+func addHealth(value):
+	emit_signal("healthAdd", value)
+
+func _on_interface_death():
+	emit_signal("_on_death")
+	Global.lose()
+	pass # Replace with function body.

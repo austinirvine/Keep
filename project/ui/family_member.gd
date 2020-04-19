@@ -3,13 +3,13 @@ extends Control
 export(NodePath) var timer
 export(NodePath) var timer_progress
 export(NodePath) var life_button
-export(NodePath) var bunny_dead_pic
+export(NodePath) var bunny_dead
 export(NodePath) var bunny_label
 
 signal timeout #game is paused
 
 enum {TIME_START, TIME_RUNNING, TIMEOUT, DEAD, TIME_RESET, TIME_WIN}
-var time_state = TIME_RUNNING
+var time_state = TIMEOUT
 
 var button_to_use = 0
 var buttons = ["family_member1", "family_member2", "family_member3", "family_member4", "family_member5"]
@@ -25,18 +25,22 @@ func _ready():
 	timer_progress = get_node(timer_progress)
 	life_button = get_node(life_button)
 	bunny_label = get_node(bunny_label)
-	bunny_dead_pic = get_node(bunny_dead_pic)
+	bunny_dead = get_node(bunny_dead)
 	timer.connect("timeout", self, "_on_timeout")
 	start_with_name()
+	Global.connect("start", self, "_on_start")
+
+func _on_start():
+	bunny_dead.visible = false
 	run_timer()
 
 func _process(delta):
-	if time_state == DEAD:
+	if time_state == DEAD or time_state == TIMEOUT:
 		return
 
-	if timer_progress.value == 100:
+	if timer_progress.value >= 100:
 		time_state = DEAD
-		bunny_died()
+		died()
 
 	if time_state == TIME_WIN:
 		timer_progress.value = 0
@@ -48,6 +52,9 @@ func _process(delta):
 	emit_signal("timeout_strength", float(timer_progress.value) / 100.0)
 
 func _input(event):
+	if time_state == DEAD:
+		return
+
 	if event.is_action_released(buttons[button_to_use]):
 		run_timer()
 		pass
@@ -84,8 +91,8 @@ func run_timer():
 func pause_timer():
 	timer.stop()
 
-func bunny_died():
-	bunny_dead_pic.visible = true
+func died():
+	bunny_dead.visible = true
 
 func _on_LifeButton_pressed():
 	if time_state != DEAD:
