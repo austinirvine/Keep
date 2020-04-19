@@ -27,7 +27,6 @@ func _input(event):
 		if camera_x_rotation + x_delta > -50 and camera_x_rotation + x_delta < 50:
 			camera.rotate_x(deg2rad(-x_delta))
 			camera_x_rotation += x_delta
-		print_debug("moving mouse")
 
 func _physics_process(delta):
 	var body_basis = body.get_global_transform().basis

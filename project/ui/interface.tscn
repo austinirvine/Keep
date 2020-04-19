@@ -4,7 +4,6 @@
 [ext_resource path="res://ui/healthbar.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ui/items.tscn" type="PackedScene" id=3]
 
-
 [node name="interface" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0

@@ -1,10 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://ui/sprites/picture_frame.png" type="Texture" id=1]
 [ext_resource path="res://ui/sprites/Bars/Life.png" type="Texture" id=2]
 [ext_resource path="res://ui/sprites/Bars/Death.png" type="Texture" id=3]
-[ext_resource path="res://ui/LifeButton.tscn" type="PackedScene" id=4]
-
+[ext_resource path="res://ui/themes/button_theme.tres" type="Theme" id=4]
+[ext_resource path="res://ui/family_member.gd" type="Script" id=5]
+[ext_resource path="res://ui/sprites/dead_frame.png" type="Texture" id=6]
 
 [node name="family_member" type="Control"]
 anchor_left = 0.005
@@ -16,24 +17,15 @@ margin_top = -1776.0
 margin_right = 434.88
 margin_bottom = 4.76837e-07
 grow_vertical = 0
+script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="LifeButton" parent="." instance=ExtResource( 4 )]
-
-[node name="Control" type="NinePatchRect" parent="."]
-anchor_left = 0.048
-anchor_top = 0.692
-anchor_right = 0.949
-anchor_bottom = 0.887
-margin_left = 0.112
-margin_top = -0.462158
-margin_right = 0.0369568
-margin_bottom = 0.248047
-grow_horizontal = 2
-grow_vertical = 0
-texture = ExtResource( 1 )
+timer = NodePath("Timer")
+timer_progress = NodePath("LifeBar")
+life_button = NodePath("LifeButton")
+bunny_dead_pic = NodePath("Bunny/DeadBunny")
+bunny_label = NodePath("LifeButton/Label")
 
 [node name="LifeBar" type="TextureProgress" parent="."]
 anchor_left = 0.36
@@ -53,3 +45,61 @@ nine_patch_stretch = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Bunny" type="NinePatchRect" parent="."]
+anchor_left = 0.048
+anchor_top = 0.692
+anchor_right = 0.949
+anchor_bottom = 0.887
+margin_left = 0.112
+margin_top = -0.462158
+margin_right = 0.0369568
+margin_bottom = 0.248047
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DeadBunny" type="NinePatchRect" parent="Bunny"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 0.140045
+margin_bottom = 3.96973
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LifeButton" type="Button" parent="."]
+anchor_left = 0.045
+anchor_top = 0.898
+anchor_right = 0.952
+anchor_bottom = 0.996
+margin_left = 0.105
+margin_top = 0.720947
+margin_right = -0.112
+margin_bottom = 0.187866
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="LifeButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_vertical = 1
+size_flags_stretch_ratio = 0.0
+theme = ExtResource( 4 )
+text = "Mike"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+[connection signal="pressed" from="LifeButton" to="." method="_on_LifeButton_pressed"]
