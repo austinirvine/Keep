@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://interactable/collectable_box.tscn" type="PackedScene" id=1]
+
+[node name="interactable_world" type="Spatial"]
+
+[node name="collectable_box" parent="." instance=ExtResource( 1 )]

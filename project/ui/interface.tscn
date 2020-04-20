@@ -1,9 +1,16 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://ui/sprites/Bars/family_tree.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ui/healthbar.tscn" type="PackedScene" id=2]
-[ext_resource path="res://ui/items.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ui/sprites/label_back.png" type="Texture" id=3]
 [ext_resource path="res://ui/interface.gd" type="Script" id=4]
+[ext_resource path="res://ui/themes/fonts/interaction_font.tres" type="DynamicFont" id=5]
+[ext_resource path="res://ui/sprites/microchip.png" type="Texture" id=6]
+[ext_resource path="res://ui/sprites/alph.png" type="Texture" id=7]
+[ext_resource path="res://ui/sprites/alph-inactive.png" type="Texture" id=8]
+[ext_resource path="res://ui/sprites/battery-inactive.png" type="Texture" id=9]
+[ext_resource path="res://ui/sprites/microchip-inactive.png" type="Texture" id=10]
+[ext_resource path="res://ui/sprites/battery.png" type="Texture" id=11]
 
 [node name="interface" type="Control"]
 anchor_right = 1.0
@@ -29,13 +36,122 @@ margin_top = 21.0
 margin_right = 351.0
 margin_bottom = 71.0
 
-[node name="itemsCollected" parent="." instance=ExtResource( 3 )]
+[node name="itemsCollected" type="VBoxContainer" parent="."]
 anchor_left = 0.991
 anchor_right = 1.0
 margin_left = -98.7841
 margin_top = 8.0
 margin_right = -9.0
 margin_bottom = 182.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="collectable" type="NinePatchRect" parent="itemsCollected"]
+margin_right = 100.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 3 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="active" type="NinePatchRect" parent="itemsCollected/collectable"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="inactive" type="NinePatchRect" parent="itemsCollected/collectable"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 8 )
+
+[node name="collectable2" type="NinePatchRect" parent="itemsCollected"]
+margin_top = 104.0
+margin_right = 100.0
+margin_bottom = 204.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 3 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="active" type="NinePatchRect" parent="itemsCollected/collectable2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="inactive" type="NinePatchRect" parent="itemsCollected/collectable2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 10 )
+
+[node name="collectable3" type="NinePatchRect" parent="itemsCollected"]
+margin_top = 208.0
+margin_right = 100.0
+margin_bottom = 308.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 3 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="active" type="NinePatchRect" parent="itemsCollected/collectable3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 11 )
+
+[node name="inactive" type="NinePatchRect" parent="itemsCollected/collectable3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 9 )
+
+[node name="interaction_label" type="Label" parent="."]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -5.0
+margin_bottom = 52.0
+custom_fonts/font = ExtResource( 5 )
+text = "Press E to grab object"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="placing_label" type="Label" parent="."]
+visible = false
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -5.0
+margin_bottom = 52.0
+custom_fonts/font = ExtResource( 5 )
+text = "Press f to Place On Sled"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="addToHealth" from="." to="healthbar" method="_on_interface_addToHealth"]
 [connection signal="reduceHealth" from="." to="healthbar" method="_on_interface_reduceHealth"]
 [connection signal="death" from="healthbar" to="." method="_on_healthbar_death"]
