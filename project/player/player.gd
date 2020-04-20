@@ -10,6 +10,12 @@ onready var body = $CollisionShape
 onready var body_mesh = $CollisionShape/MeshInstance
 onready var camera = $CollisionShape/Camera
 
+var walk = load("res://audio/sfx/GrassWalk1.wav")
+var turn = load("res://audio/sfx/GrassWalk2.wav")
+var jump = load("res://audio/sfx/JumpGrass.wav")
+
+var playing = false
+
 var velocity = Vector3()
 var lock = true
 
@@ -56,6 +62,12 @@ func _physics_process(delta):
 	elif Input.is_action_pressed("move_right"):
 		direction += body_basis.x
 
+	if direction.x != 0 or direction.z != 0:
+		walking_with_sound()
+	else:
+		playing = false
+		$MovementPlayer.stop()
+
 	direction = direction.normalized()
 
 	velocity = velocity.linear_interpolate(direction * speed, acceleration * delta)
@@ -63,6 +75,7 @@ func _physics_process(delta):
 
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y += jump_power
+		jumping_with_sound()
 
 	velocity = move_and_slide(velocity, Vector3.UP)
 
@@ -75,4 +88,38 @@ func addHealth(value):
 func _on_interface_death():
 	emit_signal("_on_death")
 	Global.lose()
+	pass # Replace with function body.
+
+func walking_with_sound():
+	if playing:
+		return
+	playing = true
+	var movement_player = get_node("MovementPlayer")
+	movement_player.stop()
+	movement_player.stream = walk
+	movement_player.play()
+	pass
+
+func turning_with_sound():
+	if playing:
+		return
+	playing = true
+	var movement_player = get_node("MovementPlayer")
+	movement_player.stop()
+	movement_player.stream = turn
+	movement_player.play()
+	pass
+
+func jumping_with_sound():
+	if playing:
+		return
+	playing = true
+	var movement_player = get_node("MovementPlayer")
+	movement_player.stop()
+	movement_player.stream = jump
+	movement_player.play()
+	pass
+
+func _on_MovementPlayer_finished():
+	playing = false
 	pass # Replace with function body.

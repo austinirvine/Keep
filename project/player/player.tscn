@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://player/interaction.gd" type="Script" id=2]
+[ext_resource path="res://audio/sfx/GrabToy.wav" type="AudioStream" id=3]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.5
@@ -29,7 +30,14 @@ enabled = true
 cast_to = Vector3( 0, 0, -2 )
 collision_mask = 2
 script = ExtResource( 2 )
+effect_player = NodePath("../../../EffectPlayer")
 
 [node name="MeshInstance" type="MeshInstance" parent="CollisionShape"]
 mesh = SubResource( 2 )
 material/0 = null
+
+[node name="MovementPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="EffectPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+[connection signal="finished" from="MovementPlayer" to="." method="_on_MovementPlayer_finished"]

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/GrassWalk1.wav-58fd9a6bb590b4f170000bdf874e2a31.sample"
+
+[deps]
+
+source_file="res://audio/sfx/GrassWalk1.wav"
+dest_files=[ "res://.import/GrassWalk1.wav-58fd9a6bb590b4f170000bdf874e2a31.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -2,6 +2,8 @@ extends Node
 
 class_name interactable
 
+export var obj_name = ""
+
 var sled_collider
 var draggable = true
 var dragging = false

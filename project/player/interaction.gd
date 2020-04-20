@@ -1,5 +1,7 @@
 extends RayCast
 
+export(NodePath) var effect_player
+
 var current_collider
 var sled_collider
 var object_collider
@@ -11,6 +13,7 @@ onready var has_sled = false
 onready var has_object = false
 
 func _ready():
+	effect_player = get_node(effect_player)
 	set_interaction_text("")
 
 func _process(delta):
@@ -54,6 +57,7 @@ func interactable_collision(collider):
 		colliding_with_sled = false
 
 	if Input.is_action_just_pressed("Interact"):
+		pickup_toy_with_sound()
 		if !colliding_with_sled:
 			collider.interact()
 			has_object = true
@@ -120,3 +124,7 @@ func placing_objects(collider):
 				set_interaction_text(object_collider.get_interaction_text())
 				has_object = false
 				set_interaction_text("")
+
+func pickup_toy_with_sound():
+	effect_player.play()
+	pass

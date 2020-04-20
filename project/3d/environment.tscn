@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://3d/ground.tscn" type="PackedScene" id=1]
 [ext_resource path="res://3d/tree.dae" type="PackedScene" id=2]
@@ -10,8 +10,9 @@
 [ext_resource path="res://3d/circuitboard.dae" type="PackedScene" id=8]
 [ext_resource path="res://3d/battery.dae" type="PackedScene" id=9]
 [ext_resource path="res://interactable/interactable.gd" type="Script" id=10]
+[ext_resource path="res://interactable/Dropoff.tscn" type="PackedScene" id=11]
 
-[sub_resource type="BoxShape" id=4]
+[sub_resource type="BoxShape" id=1]
 extents = Vector3( 1.08798, 1.26232, 1.1993 )
 
 [sub_resource type="BoxShape" id=2]
@@ -59,6 +60,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24.3263, 1.22219, 0 )
 collision_layer = 7
 can_sleep = false
 script = ExtResource( 10 )
+obj_name = "alphie"
 
 [node name="Area" type="Area" parent="collectable_box"]
 input_ray_pickable = false
@@ -66,7 +68,7 @@ space_override = 1
 collision_layer = 7
 
 [node name="CollisionShape" type="CollisionShape" parent="collectable_box/Area"]
-shape = SubResource( 4 )
+shape = SubResource( 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="collectable_box"]
 shape = SubResource( 2 )
@@ -79,6 +81,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24.3263, 1.22219, -23.8543 )
 collision_layer = 7
 can_sleep = false
 script = ExtResource( 10 )
+obj_name = "circuit"
 
 [node name="Area" type="Area" parent="collectable_box2"]
 input_ray_pickable = false
@@ -86,7 +89,7 @@ space_override = 1
 collision_layer = 7
 
 [node name="CollisionShape" type="CollisionShape" parent="collectable_box2/Area"]
-shape = SubResource( 4 )
+shape = SubResource( 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="collectable_box2"]
 shape = SubResource( 2 )
@@ -99,6 +102,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24.3263, 1.22219, 29.4928 )
 collision_layer = 7
 can_sleep = false
 script = ExtResource( 10 )
+obj_name = "battery"
 
 [node name="Area" type="Area" parent="collectable_box3"]
 input_ray_pickable = false
@@ -106,7 +110,7 @@ space_override = 1
 collision_layer = 7
 
 [node name="CollisionShape" type="CollisionShape" parent="collectable_box3/Area"]
-shape = SubResource( 4 )
+shape = SubResource( 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="collectable_box3"]
 shape = SubResource( 2 )
@@ -121,6 +125,10 @@ transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, -1.0
 
 [node name="sled" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.444, 1.17705, 7.09615 )
+visible = false
+
+[node name="Dropoff" parent="." instance=ExtResource( 11 )]
+transform = Transform( 11.8573, 0, 0, 0, 4.92872, 0, 0, 0, 5.07214, -46.8261, 3.40454, -0.0692663 )
 [connection signal="area_entered" from="collectable_box/Area" to="collectable_box" method="_on_Area_area_entered"]
 [connection signal="area_entered" from="collectable_box2/Area" to="collectable_box2" method="_on_Area_area_entered"]
 [connection signal="area_entered" from="collectable_box3/Area" to="collectable_box3" method="_on_Area_area_entered"]
