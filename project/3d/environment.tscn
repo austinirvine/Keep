@@ -9,8 +9,8 @@
 [ext_resource path="res://interactable/sled.tscn" type="PackedScene" id=7]
 [ext_resource path="res://3d/circuitboard.dae" type="PackedScene" id=8]
 [ext_resource path="res://3d/battery.dae" type="PackedScene" id=9]
-[ext_resource path="res://interactable/interactable.gd" type="Script" id=10]
 [ext_resource path="res://interactable/Dropoff.tscn" type="PackedScene" id=11]
+[ext_resource path="res://interactable/interactableBox.gd" type="Script" id=12]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 1.08798, 1.26232, 1.1993 )
@@ -59,7 +59,7 @@ bake_extents = Vector3( 73.3932, 65.1961, 92.5316 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24.3263, 1.22219, 0 )
 collision_layer = 7
 can_sleep = false
-script = ExtResource( 10 )
+script = ExtResource( 12 )
 obj_name = "alphie"
 
 [node name="Area" type="Area" parent="collectable_box"]
@@ -80,7 +80,7 @@ transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -1.289, 0 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24.3263, 1.22219, -23.8543 )
 collision_layer = 7
 can_sleep = false
-script = ExtResource( 10 )
+script = ExtResource( 12 )
 obj_name = "circuit"
 
 [node name="Area" type="Area" parent="collectable_box2"]
@@ -101,7 +101,7 @@ transform = Transform( 0.709912, 0.500574, 0.495429, -0.124321, 0.781466, -0.611
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24.3263, 1.22219, 29.4928 )
 collision_layer = 7
 can_sleep = false
-script = ExtResource( 10 )
+script = ExtResource( 12 )
 obj_name = "battery"
 
 [node name="Area" type="Area" parent="collectable_box3"]
@@ -125,7 +125,6 @@ transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, -1.0
 
 [node name="sled" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.444, 1.17705, 7.09615 )
-visible = false
 
 [node name="Dropoff" parent="." instance=ExtResource( 11 )]
 transform = Transform( 11.8573, 0, 0, 0, 4.92872, 0, 0, 0, 5.07214, -46.8261, 3.40454, -0.0692663 )

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://global.gd" type="Script" id=1]
 [ext_resource path="res://audio/amb/ForestAmbience(1).ogg" type="AudioStream" id=2]
 [ext_resource path="res://audio/sfx/Machine.wav" type="AudioStream" id=3]
+[ext_resource path="res://audio/mus/RabbitVsWolves_StrangeUniverse.ogg" type="AudioStream" id=4]
 
 [node name="Node" type="Node"]
 script = ExtResource( 1 )
@@ -12,6 +13,7 @@ stream = ExtResource( 2 )
 volume_db = -14.361
 
 [node name="AudioStreamPlayerMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
 
 [node name="VictoryPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
