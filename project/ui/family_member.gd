@@ -46,10 +46,12 @@ func _process(delta):
 		timer_progress.value = 0
 	elif time_state == TIME_RUNNING:
 		timer_progress.value = ((timer.wait_time - timer.time_left) / timer.wait_time) * 100.0
+	elif time_state == DEAD:
+		timer_progress = 100
 	else:
 		timer_progress.value = 0
 
-	emit_signal("timeout_strength", float(timer_progress.value) / 100.0)
+	#emit_signal("timeout_strength", float(timer_progress.value) / 100.0)
 
 func _input(event):
 	if time_state == DEAD:

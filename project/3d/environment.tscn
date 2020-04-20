@@ -1,33 +1,24 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://3d/ground.tscn" type="PackedScene" id=1]
 [ext_resource path="res://3d/tree.dae" type="PackedScene" id=2]
 [ext_resource path="res://3d/nest.dae" type="PackedScene" id=3]
 [ext_resource path="res://3d/cave.tscn" type="PackedScene" id=4]
 [ext_resource path="res://3d/tree.tscn" type="PackedScene" id=5]
+[ext_resource path="res://3d/AlphieIII.dae" type="PackedScene" id=6]
+[ext_resource path="res://interactable/sled.tscn" type="PackedScene" id=7]
+[ext_resource path="res://3d/circuitboard.dae" type="PackedScene" id=8]
+[ext_resource path="res://3d/battery.dae" type="PackedScene" id=9]
+[ext_resource path="res://interactable/interactable.gd" type="Script" id=10]
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 1.08798, 1.26232, 1.1993 )
+
+[sub_resource type="BoxShape" id=2]
+
+[sub_resource type="CubeMesh" id=3]
 
 [node name="environment" type="Spatial"]
-
-[node name="ground" parent="." instance=ExtResource( 1 )]
-transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0 )
-
-[node name="tree9" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.1662, 0, 14.674 )
-
-[node name="tree10" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25.0499, 0, -10.1892 )
-
-[node name="tree11" parent="." instance=ExtResource( 5 )]
-transform = Transform( -0.976837, 0, -0.213985, 0, 1, 0, 0.213985, 0, -0.976837, -25.0499, 0, -40.4071 )
-
-[node name="tree8" parent="." instance=ExtResource( 2 )]
-transform = Transform( -0.7619, -2.83116e-08, -0.647694, 2.83116e-08, 1, -7.70151e-08, 0.647694, -7.70151e-08, -0.7619, 34.0384, 1.21487e-06, 27.4401 )
-
-[node name="nest" parent="tree8" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.889, 6.45784, 0.0782051 )
-
-[node name="BakedLightmap" type="BakedLightmap" parent="."]
-bake_extents = Vector3( 73.3932, 65.1961, 92.5316 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30.5555, 79.5255, 0 )
@@ -36,5 +27,100 @@ light_energy = 16.0
 light_indirect_energy = 8.4
 light_specular = 0.69
 
+[node name="ground" parent="." instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0 )
+
+[node name="forest" type="Spatial" parent="."]
+
+[node name="tree9" parent="forest" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.1662, 0, 14.674 )
+
+[node name="tree10" parent="forest" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25.0499, 0, -10.1892 )
+
+[node name="tree11" parent="forest" instance=ExtResource( 5 )]
+transform = Transform( -0.976837, 0, -0.213985, 0, 1, 0, 0.213985, 0, -0.976837, -25.0499, 0, -40.4071 )
+
+[node name="tree8" parent="forest" instance=ExtResource( 2 )]
+transform = Transform( -0.7619, -2.83116e-08, -0.647694, 2.83116e-08, 1, -7.70151e-08, 0.647694, -7.70151e-08, -0.7619, 34.0384, 1.21487e-06, 27.4401 )
+
+[node name="nest" parent="forest/tree8" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.889, 6.45784, 0.0782051 )
+
 [node name="cave" parent="." instance=ExtResource( 4 )]
 transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, -35.213, 0, 0 )
+
+[node name="BakedLightmap" type="BakedLightmap" parent="."]
+visible = false
+bake_extents = Vector3( 73.3932, 65.1961, 92.5316 )
+
+[node name="collectable_box" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24.3263, 1.22219, 0 )
+collision_layer = 7
+can_sleep = false
+script = ExtResource( 10 )
+
+[node name="Area" type="Area" parent="collectable_box"]
+input_ray_pickable = false
+space_override = 1
+collision_layer = 7
+
+[node name="CollisionShape" type="CollisionShape" parent="collectable_box/Area"]
+shape = SubResource( 4 )
+
+[node name="CollisionShape" type="CollisionShape" parent="collectable_box"]
+shape = SubResource( 2 )
+
+[node name="AlphieIII" parent="collectable_box" instance=ExtResource( 6 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -1.289, 0 )
+
+[node name="collectable_box2" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24.3263, 1.22219, -23.8543 )
+collision_layer = 7
+can_sleep = false
+script = ExtResource( 10 )
+
+[node name="Area" type="Area" parent="collectable_box2"]
+input_ray_pickable = false
+space_override = 1
+collision_layer = 7
+
+[node name="CollisionShape" type="CollisionShape" parent="collectable_box2/Area"]
+shape = SubResource( 4 )
+
+[node name="CollisionShape" type="CollisionShape" parent="collectable_box2"]
+shape = SubResource( 2 )
+
+[node name="circuitboard" parent="collectable_box2" instance=ExtResource( 8 )]
+transform = Transform( 0.709912, 0.500574, 0.495429, -0.124321, 0.781466, -0.611437, -0.693231, 0.372475, 0.617004, 0, -1.19209e-07, 0 )
+
+[node name="collectable_box3" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24.3263, 1.22219, 29.4928 )
+collision_layer = 7
+can_sleep = false
+script = ExtResource( 10 )
+
+[node name="Area" type="Area" parent="collectable_box3"]
+input_ray_pickable = false
+space_override = 1
+collision_layer = 7
+
+[node name="CollisionShape" type="CollisionShape" parent="collectable_box3/Area"]
+shape = SubResource( 4 )
+
+[node name="CollisionShape" type="CollisionShape" parent="collectable_box3"]
+shape = SubResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="collectable_box3"]
+visible = false
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="battery" parent="collectable_box3" instance=ExtResource( 9 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, -1.084, 0 )
+
+[node name="sled" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.444, 1.17705, 7.09615 )
+[connection signal="area_entered" from="collectable_box/Area" to="collectable_box" method="_on_Area_area_entered"]
+[connection signal="area_entered" from="collectable_box2/Area" to="collectable_box2" method="_on_Area_area_entered"]
+[connection signal="area_entered" from="collectable_box3/Area" to="collectable_box3" method="_on_Area_area_entered"]
