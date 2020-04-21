@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://ui/sprites/picture_frame.png" type="Texture" id=1]
+[ext_resource path="res://ui/sprites/rabbits/male4.png" type="Texture" id=1]
 [ext_resource path="res://ui/sprites/Bars/Life.png" type="Texture" id=2]
 [ext_resource path="res://ui/sprites/Bars/Death.png" type="Texture" id=3]
 [ext_resource path="res://ui/themes/button_theme.tres" type="Theme" id=4]
@@ -26,6 +26,7 @@ timer_progress = NodePath("LifeBar")
 life_button = NodePath("LifeButton")
 bunny_dead = NodePath("Bunny/DeadBunny")
 bunny_label = NodePath("LifeButton/Label")
+bunny_image = NodePath("Bunny")
 
 [node name="LifeBar" type="TextureProgress" parent="."]
 anchor_left = 0.36

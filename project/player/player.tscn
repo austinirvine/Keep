@@ -20,6 +20,7 @@ shape = SubResource( 1 )
 
 [node name="Camera" type="Camera" parent="CollisionShape"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.240133, -0.0297004 )
+far = 141.4
 
 [node name="RayCast" type="RayCast" parent="CollisionShape/Camera"]
 visible = false

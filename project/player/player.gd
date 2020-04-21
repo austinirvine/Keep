@@ -34,6 +34,8 @@ func _on_start():
 func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	if Input.is_action_just_pressed("jump"):
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 func _input(event):
 	if lock:
@@ -87,7 +89,7 @@ func addHealth(value):
 
 func _on_interface_death():
 	emit_signal("_on_death")
-	Global.lose()
+	Global.lose("Your carrot juice was depleted.")
 	pass # Replace with function body.
 
 func walking_with_sound():
@@ -111,8 +113,6 @@ func turning_with_sound():
 	pass
 
 func jumping_with_sound():
-	if playing:
-		return
 	playing = true
 	var movement_player = get_node("MovementPlayer")
 	movement_player.stop()

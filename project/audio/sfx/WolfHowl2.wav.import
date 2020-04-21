@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/WolfHowl2.wav-dba95cf500543e08868f932b89398c74.sample"
+
+[deps]
+
+source_file="res://audio/sfx/WolfHowl2.wav"
+dest_files=[ "res://.import/WolfHowl2.wav-dba95cf500543e08868f932b89398c74.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

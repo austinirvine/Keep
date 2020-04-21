@@ -76,3 +76,8 @@ rect_min_size = Vector2( 60, 200 )
 [connection signal="signal3" from="." to="family_member3" method="_on_family_bar_signal3"]
 [connection signal="signal4" from="." to="family_member4" method="_on_family_bar_signal4"]
 [connection signal="signal5" from="." to="family_member5" method="_on_family_bar_signal5"]
+[connection signal="member_died" from="family_member" to="." method="_on_family_member_member_died"]
+[connection signal="member_died" from="family_member2" to="." method="_on_family_member2_member_died"]
+[connection signal="member_died" from="family_member3" to="." method="_on_family_member3_member_died"]
+[connection signal="member_died" from="family_member4" to="." method="_on_family_member4_member_died"]
+[connection signal="member_died" from="family_member5" to="." method="_on_family_member5_member_died"]

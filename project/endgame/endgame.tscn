@@ -1,0 +1,82 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://endgame/endgame.gd" type="Script" id=1]
+[ext_resource path="res://ui/themes/fonts/menu_font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://ui/themes/fonts/sub_menu.tres" type="DynamicFont" id=3]
+
+[node name="endgame" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+lose_label = NodePath("lose_label")
+lose_text = NodePath("lose_label/lose_text")
+win_label = NodePath("win_label")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.219608, 0.141176, 0.141176, 0.921569 )
+
+[node name="lose_label" type="Label" parent="."]
+visible = false
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 74.0
+margin_top = -101.0
+margin_right = -64.0
+margin_bottom = 89.0
+custom_fonts/font = ExtResource( 2 )
+text = "MISSION FAILED"
+align = 1
+
+[node name="lose_text" type="Label" parent="lose_label"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 22.0
+custom_fonts/font = ExtResource( 2 )
+text = "The rabbits are gone"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="restart" type="Label" parent="lose_label"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 128.0
+custom_fonts/font = ExtResource( 3 )
+text = "press escape to restart"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="win_label" type="Label" parent="."]
+visible = false
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 74.0
+margin_top = -101.0
+margin_right = -64.0
+margin_bottom = 89.0
+custom_fonts/font = ExtResource( 2 )
+text = "Your family is forever in your debt."
+align = 1
+valign = 1
+
+[node name="restart" type="Label" parent="win_label"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 128.0
+custom_fonts/font = ExtResource( 3 )
+text = "press escape to restart"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

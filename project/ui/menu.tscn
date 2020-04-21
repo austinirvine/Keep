@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://ui/themes/fonts/menu_font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://ui/themes/fonts/sub_menu.tres" type="DynamicFont" id=1]
 [ext_resource path="res://ui/menu.gd" type="Script" id=2]
+[ext_resource path="res://ui/themes/fonts/master_menu.tres" type="DynamicFont" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "fade"
@@ -43,12 +44,60 @@ margin_left = -265.384
 margin_top = -126.0
 margin_right = 279.616
 margin_bottom = 140.0
-custom_fonts/font = ExtResource( 1 )
+custom_fonts/font = ExtResource( 3 )
 text = "PRESS SPACE TO PLAY
--USE NUMBER KEYS TO KEEP- -YOUR RABBIT FAMILY ALIVE-"
+"
 align = 1
-valign = 1
 autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Label"]
+anchor_left = 0.516
+anchor_top = 0.5
+anchor_right = 0.516
+anchor_bottom = 0.5
+margin_left = -441.22
+margin_top = -111.0
+margin_right = 399.78
+margin_bottom = 3.0
+custom_fonts/font = ExtResource( 3 )
+text = "
+My forest is being overrun by wolves that want to eat my family.
+"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="instructions" type="Label" parent="Label"]
+anchor_left = 0.516
+anchor_top = 0.5
+anchor_right = 0.516
+anchor_bottom = 0.5
+margin_left = -419.22
+margin_top = -16.0
+margin_right = 412.78
+margin_bottom = 171.0
+custom_fonts/font = ExtResource( 1 )
+text = "1. By pressing 1-5 on your keyboard I can protect my family members temporarily from death.
+2. Wort wolves away by bringing 3 electronic parts scattered in the forest back to your cave to construct a machine.
+3. This machine will scare the wolves away"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Label"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -163.0
+margin_right = 138.0
+margin_bottom = 59.0
+color = Color( 0.266667, 0.262745, 0.262745, 0.776471 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
