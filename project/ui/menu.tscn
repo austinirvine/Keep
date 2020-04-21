@@ -83,7 +83,7 @@ margin_right = 412.78
 margin_bottom = 171.0
 custom_fonts/font = ExtResource( 1 )
 text = "1. By pressing 1-5 on your keyboard I can protect my family members temporarily from death.
-2. Wort wolves away by bringing 3 electronic parts scattered in the forest back to your cave to construct a machine.
+2. Ward wolves away by bringing 3 electronic parts scattered in the forest back to your cave to construct a machine.
 3. This machine will scare the wolves away"
 autowrap = true
 __meta__ = {

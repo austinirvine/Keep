@@ -17,14 +17,14 @@ extents = Vector3( 1.08798, 1.26232, 1.1993 )
 
 [sub_resource type="CubeMesh" id=3]
 
-[sub_resource type="SpatialMaterial" id=6]
+[sub_resource type="SpatialMaterial" id=4]
 albedo_color = Color( 0, 0, 0, 1 )
 metallic_specular = 0.0
 
-[sub_resource type="CubeMesh" id=4]
-material = SubResource( 6 )
+[sub_resource type="CubeMesh" id=5]
+material = SubResource( 4 )
 
-[sub_resource type="BoxShape" id=5]
+[sub_resource type="BoxShape" id=6]
 
 [node name="environment" type="Spatial"]
 
@@ -668,92 +668,85 @@ transform = Transform( 0.851974, 0, 57.2271, 0, 39.592, 0, -0.523584, 0, 93.1196
 
 [node name="MeshInstance" type="MeshInstance" parent="wall1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.89307, 0, -0.0579585 )
-mesh = SubResource( 4 )
+mesh = SubResource( 5 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="wall1"]
 
 [node name="CollisionShape" type="CollisionShape" parent="wall1/StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="wall2" type="Spatial" parent="."]
 transform = Transform( 0.0199827, 0, 109.277, 0, 39.592, 0, -0.9998, 0, 2.18408, 121.862, 23.9459, 206.438 )
 
 [node name="MeshInstance" type="MeshInstance" parent="wall2"]
-mesh = SubResource( 4 )
+mesh = SubResource( 5 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="wall2"]
 
 [node name="CollisionShape" type="CollisionShape" parent="wall2/StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="wall3" type="Spatial" parent="."]
 transform = Transform( -0.447322, 0, 97.7537, 0, 39.592, 0, -0.894373, 0, -48.8917, 299.538, 24.472, 159.793 )
 
 [node name="MeshInstance" type="MeshInstance" parent="wall3"]
-mesh = SubResource( 4 )
+mesh = SubResource( 5 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="wall3"]
 
 [node name="CollisionShape" type="CollisionShape" parent="wall3/StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="wall6" type="Spatial" parent="."]
 transform = Transform( -0.930097, 0, 40.1468, 0, 39.592, 0, -0.367313, 0, -101.658, 406.214, 23.9459, 26.2446 )
 
 [node name="MeshInstance" type="MeshInstance" parent="wall6"]
-mesh = SubResource( 4 )
+mesh = SubResource( 5 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="wall6"]
 
 [node name="CollisionShape" type="CollisionShape" parent="wall6/StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="wall5" type="Spatial" parent="."]
 transform = Transform( -0.811757, 0, -63.8298, 0, 39.592, 0, 0.583995, 0, -88.724, 364.913, 23.9459, -109.144 )
 
 [node name="MeshInstance" type="MeshInstance" parent="wall5"]
-mesh = SubResource( 4 )
+mesh = SubResource( 5 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="wall5"]
 
 [node name="CollisionShape" type="CollisionShape" parent="wall5/StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="wall4" type="Spatial" parent="."]
 transform = Transform( 0.0291431, 0, -109.252, 0, 39.592, 0, 0.999575, 0, 3.1853, 194.049, 24.472, -191.027 )
 
 [node name="MeshInstance" type="MeshInstance" parent="wall4"]
-mesh = SubResource( 4 )
+mesh = SubResource( 5 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="wall4"]
 
 [node name="CollisionShape" type="CollisionShape" parent="wall4/StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="wall7" type="Spatial" parent="."]
 transform = Transform( 0.590676, 0, -88.194, 0, 39.592, 0, 0.806909, 0, 64.5601, 4.95557, 24.472, -128.673 )
 
 [node name="MeshInstance" type="MeshInstance" parent="wall7"]
-mesh = SubResource( 4 )
+mesh = SubResource( 5 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="wall7"]
 
 [node name="CollisionShape" type="CollisionShape" parent="wall7/StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="Lights" type="Spatial" parent="."]
 

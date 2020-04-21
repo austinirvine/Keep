@@ -22,7 +22,7 @@ transform = Transform( 0.642788, 0, 0.766044, 0, 1, 0, -0.766044, 0, 0.642788, 0
 
 [node name="SpotLight" type="OmniLight" parent="player/CollisionShape/Camera" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0778316, 0.142227, -0.135951 )
-light_color = Color( 0.952941, 0.878431, 0.47451, 1 )
+light_color = Color( 0.6, 0.407843, 0.0784314, 1 )
 light_energy = 3.58
 omni_range = 13.6302
 

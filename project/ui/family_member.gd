@@ -93,7 +93,7 @@ func start_with_name():
 	bunny_label.set_text(name_of_bunny)
 
 func run_timer():
-	var rand_wait_time = randi() % 20 + 10
+	var rand_wait_time = randi() % 20 + 20
 	timer.set_wait_time(rand_wait_time)
 	time_state = TIME_RUNNING
 	timer_progress.value = 0
