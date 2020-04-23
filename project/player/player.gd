@@ -30,12 +30,11 @@ func _ready():
 
 func _on_start():
 	lock = !lock
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	if Input.is_action_just_pressed("jump"):
-		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 func _input(event):
 	if lock:

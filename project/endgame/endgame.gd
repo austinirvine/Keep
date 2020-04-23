@@ -11,7 +11,7 @@ func _ready():
 	win_label = get_node(win_label)
 	hide()
 	Global.connect("lose", self, "lose")
-	Global.connect("victory", self, "victory")
+	Global.connect("win", self, "win")
 
 func lose(value):
 	lose_label.set_visible(true)
@@ -20,8 +20,8 @@ func lose(value):
 	show()
 	pass
 
-func win(value):
-	lose_label.set_visible(true)
-	win_label.set_visible(false)
+func win():
+	lose_label.set_visible(false)
+	win_label.set_visible(true)
 	show()
 	pass

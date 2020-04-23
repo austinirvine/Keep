@@ -27,5 +27,5 @@ volume_db = -2.144
 
 [node name="Dialog" type="AudioStreamPlayer" parent="."]
 volume_db = -9.65
-pitch_scale = 0.84
+pitch_scale = 1.05
 [connection signal="finished" from="Dialog" to="." method="_on_Dialog_finished"]

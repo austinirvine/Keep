@@ -3,7 +3,7 @@ extends Node
 var dialogs = [load("res://audio/dialog/Rabbit-Dialog-1.wav"),load("res://audio/dialog/Rabbit-Dialog-2.wav"),load("res://audio/dialog/Rabbit-Dialog-3.wav"),load("res://audio/dialog/Rabbit-Dialog-4.wav")]
 
 signal start
-signal victory
+signal win
 signal lose(value)
 
 onready var dialog_clip = 0
